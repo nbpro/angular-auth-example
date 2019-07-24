@@ -1,0 +1,35 @@
+<section class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <form [formGroup]="loginForm">
+            <div class="field">
+              <label class="label">User Name</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="email"
+                  placeholder="Enter your username"
+                  formControlName="username"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="Enter your username",
+                  formControlName="password",
+                />
+              </div>
+            </div>
+            <button class="button is-primary is-outlined" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

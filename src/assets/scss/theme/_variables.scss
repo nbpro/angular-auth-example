@@ -1,0 +1,32 @@
+@import "palette";
+
+// $app-font: "Proxima Nova Rg",sans-serif , arial;
+// application theme
+$application-primary: mat-palette($app-blue-palette);
+$application-accent:  mat-palette($app-grey-palette);
+$application-warn:    mat-palette($app-red-palette);
+
+$application-theme: mat-app-theme($application-primary, $application-accent,$application-warn);
+
+//fonts
+$app-font-italic: '"Proxima Nova Regular It",sans-serif , arial';
+$app-font-semibold-italic: '"Proxima Nova Semibold Lt",sans-serif , arial';
+
+/*** Setting font for material **/
+$app-typography-config: mat-typography-config(
+  $font-family:   '"Proxima Nova Rg",sans-serif , arial',
+  $headline:      mat-typography-level(18px, 110%, 600),
+  $button:        mat-typography-level(14px, 14px, 400),
+  $display-4:     mat-typography-level(112px, 112px, 300),
+  $display-3:     mat-typography-level(56px, 56px, 400),
+  $display-2:     mat-typography-level(45px, 48px, 400),
+  $display-1:     mat-typography-level(34px, 40px, 400),
+  $title:         mat-typography-level(20px, 32px, 400, '"Proxima Nova Semibold",sans-serif , arial'),
+  $subheading-2:  mat-typography-level(16px, 28px, 400),
+  $subheading-1:  mat-typography-level(14px, 24px, 400, '"Proxima Nova Semibold",sans-serif , arial'),
+  $body-2:        mat-typography-level(14px, 1.25, 400, '"Proxima Nova Semibold",sans-serif , arial'),
+  $body-1:        mat-typography-level(14px, 1.25, 400),
+  $caption:       mat-typography-level(12px, 20px, 400),
+    // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(16px, 1.125, 400)
+)
