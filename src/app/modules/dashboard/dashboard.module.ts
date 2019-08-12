@@ -9,7 +9,7 @@ const DASHBOARD_DECLARATIONS = [HeaderComponent, DashboardComponent];
 @NgModule({
   imports: [
     CommonModule,
-    DASHBOARD_ROUTING
+    DASHBOARD_ROUTING,
   ],
   declarations: [...DASHBOARD_DECLARATIONS]
 })

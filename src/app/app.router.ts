@@ -2,9 +2,10 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const APP_ROUTES: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'endangered', pathMatch: 'full'},
   { path: 'dashboard', loadChildren: './modules/dashboard/dashboard.module#DashboardModule'},
   { path: 'login', loadChildren: './modules/login/login.module#LoginModule'},
+  { path: 'endangered', loadChildren: './modules/iucn-list/iucn-list.module#IucnListModule'},
   { path: '**', redirectTo: 'login'}
 ];
 
