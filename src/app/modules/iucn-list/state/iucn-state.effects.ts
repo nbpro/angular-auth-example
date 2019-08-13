@@ -16,13 +16,13 @@ export class IUCNEffects {
   @Effect()
   getEndangeredSpecies: ALL = this.actions$.pipe(
     ofType(IucnListActions.GET_SPECIES_LIST),
-    ((action: any) => action.payload),
+    map((action: any) => action.payload),
       switchMap((request: any) => {
         return this.http.get(
           `http://apiv3.iucnredlist.org/api/v3/country/
           getspecies/IN?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee`).pipe(
             map(response => {
-              return new IucnListActions.GetSpeciesListSuccess(response['result']);
+              return (new IucnListActions.GetSpeciesListSuccess(response['result']));
             }),
           );
       }),
