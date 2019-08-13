@@ -1,3 +1,7 @@
-<p>
-  table-header works!
-</p>
+<thead>
+  <tr>
+    <th *ngFor="let th of columns">
+      {{th.columnDisplayName}}
+    </th>
+  </tr>
+</thead>

@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+export interface IColumnConfig {
+  searchAllowed?: boolean;
+  filterAllowed?: boolean;
+  columnName?: string;
+  columnDisplayName?: string;
+}
+export interface IHeaderConfiguration {
+  columns: Array<IColumnConfig>;
+}
 
 @Component({
   selector: 'app-table-header',
@@ -7,9 +16,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableHeaderComponent implements OnInit {
 
+  @Input() HeaderConfiguration: IHeaderConfiguration;
+
+  columns;
   constructor() { }
 
   ngOnInit() {
+    this.columns = this.HeaderConfiguration;
   }
 
 }

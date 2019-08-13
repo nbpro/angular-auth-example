@@ -3,7 +3,10 @@
     Angular Table Component
   </div>
   <div class="table-container">
-    <div  class="table-header-container">
+    <table>
+        <app-table-header [HeaderConfiguration]="headerData"></app-table-header>
+    </table>
+    <!-- <div  class="table-header-container">
       <app-table-header></app-table-header>
     </div>
     <div class="table-body-container">
@@ -11,6 +14,6 @@
     </div>
     <div class="table-footer-container">
       <app-table-footer></app-table-footer>
-    </div>
+    </div> -->
   </div>
 </section>
