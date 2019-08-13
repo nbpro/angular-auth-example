@@ -17,12 +17,12 @@ export class IUCNEffects {
   getEndangeredSpecies: ALL = this.actions$.pipe(
     ofType(IucnListActions.GET_SPECIES_LIST),
     map((action: any) => action.payload),
-      switchMap((request: any) => {
+      switchMap((countryId: any) => {
+        const token = `9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee`;
         return this.http.get(
-          `http://apiv3.iucnredlist.org/api/v3/country/
-          getspecies/IN?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee`).pipe(
+          `http://apiv3.iucnredlist.org/api/v3/country/getspecies/${countryId}?token=${token}`).pipe(
             map(response => {
-              return (new IucnListActions.GetSpeciesListSuccess(response['result']));
+              return (new IucnListActions.GetSpeciesListSuccess(response));
             }),
           );
       }),

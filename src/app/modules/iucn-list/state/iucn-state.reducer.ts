@@ -11,12 +11,14 @@ export interface IUCNDefaultState {
   status?: string;
   message?: string;
   loading?: boolean;
+  count?: number;
   data?: IEndangeredSpecies;
 }
 export const defaultState = {
   status: 'NONE',
   message: 'Fectching list of species',
   loading: false,
+  count: 0,
   data: []
 };
 
@@ -27,16 +29,22 @@ export function speciesList(
   switch (action.type) {
     case IucnActionList.GET_SPECIES_LIST:
       return {
-        ...state
+        ...state,
+        status: 'STARTED',
+        loading: true,
       };
     case IucnActionList.GET_SPECIES_LIST_SUCCESS:
       return {
         ...state,
-        data: action.payload
+        status: 'SUCCESS',
+        count: action.payload.count,
+        data: action.payload.result
       };
     case IucnActionList.GET_SPECIES_LIST_FAIL:
       return {
         ...state,
+        status: 'FAILED',
+        count: 0,
         data: []
       };
     default:
