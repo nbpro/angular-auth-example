@@ -1,3 +1,26 @@
-.table-wrapper {
-
+@import '../../../../assets/scss/core/variables';
+section {
+  position: relative;
+  top: 10%;
+  width: 100%;
+  height: 100%;
+  .section-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 5rem 0;
+    padding-top: 5rem;
+    > span {
+      font-size: 3rem;
+    }
+  }
+  .table-container {
+    table {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 2rem;
+      background-color: $table-bg;
+      padding : 0.2rem;
+    }
+  }
 }

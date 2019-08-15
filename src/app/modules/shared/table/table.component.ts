@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  headerData;
+  @Input() headerData;
+  columns;
   constructor() { }
 
   ngOnInit() {
+    this.constructHeaderColumns();
     this.headerData = [ // all the headers should be dynamically generated
       {
         searchAllowed: true,
@@ -28,9 +30,22 @@ export class TableComponent implements OnInit {
         searchAllowed: true,
         filterAllowed: true,
         columnName: 'status',
-        columnDisplayName: 'Endangred Status',
+        columnDisplayName: 'Endangered Status',
       }
     ];
+  }
+  private constructHeaderColumns() {
+    const transformData = (string) => {
+      return string.replace(/(?:_| |\b)(\w)/g, function($1){return $1.toUpperCase().replace('_',' ');});
+    };
+    this.columns = this.headerData.map((col) => {
+      return {
+        searchAllowed : true,
+        filterAllowed: true,
+        columnName: col,
+        columnDisplayName: transformData(col),
+      };
+    });
   }
 
 }

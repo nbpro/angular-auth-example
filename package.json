@@ -30,7 +30,7 @@
     "@ngrx/db": "^2.1.0",
     "@ngrx/effects": "6.1.0",
     "@ngrx/store": "6.1.0",
-    "@ngrx/store-devtools": "6.1.0",
+    "@ngrx/store-devtools": "^6.1.0",
     "@progress/kendo-angular-buttons": "4.4.0",
     "@progress/kendo-angular-dateinputs": "3.7.2",
     "@progress/kendo-angular-dropdowns": "3.5.3",

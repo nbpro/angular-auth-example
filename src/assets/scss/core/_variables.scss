@@ -1,32 +1,12 @@
-@import "../theme/variables";
+// ---------------------
+$table-header-font-weight: 400;
+$table-header-font-color: #757575;
 
-$imagesAssetPath: "../../../assets/images" !default;
+$table-cell-padding: 1.6rem;
+$table-condensed-cell-padding: $table-cell-padding/2;
 
-$background: map_get($application-theme, background);
-$foreground: map_get($application-theme, foreground);
-$primary: map_get($application-theme, primary);
-$warn: map_get($application-theme, warn);
-$accent: map_get($application-theme, accent);
-
-$app-white-color : map-get($background, card);
-$app-border-color: map-get($foreground, divider);
-
-$app-default-text-color: map-get($foreground, base);
-$app-material-bg-color: map-get($background, background);
-
-$app-primary-color: mat-color($primary);
-
-$app-accent-color: mat-color($accent);
-
-$app-warn-color: mat-color($warn);
-
-$growl-palette:(
-    warning:#FF8F00,
-    alert:#FF5358,
-    success:#91BB00,
-    information:#00b4e5,
-);
-
-$app-disabled-color: map-get($foreground, disabled);
-
-$app-sidebar-zindex : $cdk-z-index-overlay-container - 1;
+$table-bg: #fff;
+$table-bg-accent: #f5f5f5;
+$table-bg-hover: rgba(0, 0, 0, 0.12);
+$table-bg-active: $table-bg-hover;
+$table-border-color: #e0e0e0;
