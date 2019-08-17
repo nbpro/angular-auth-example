@@ -8,33 +8,20 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableComponent implements OnInit {
 
   @Input() headerData;
-  columns;
+  @Input() tableData;
+  /**
+   *
+   * table height/ width
+   */
+  columns: any;
+  data: any;
   constructor() { }
 
   ngOnInit() {
     this.constructHeaderColumns();
-    this.headerData = [ // all the headers should be dynamically generated
-      {
-        searchAllowed: true,
-        filterAllowed: true,
-        columnName: 'label',
-        columnDisplayName: 'Display Name',
-      },
-      {
-        searchAllowed: true,
-        filterAllowed: true,
-        columnName: 'iucnId',
-        columnDisplayName: 'Species Id',
-      },
-      {
-        searchAllowed: true,
-        filterAllowed: true,
-        columnName: 'status',
-        columnDisplayName: 'Endangered Status',
-      }
-    ];
+    this.constructTableData();
   }
-  private constructHeaderColumns() {
+  private constructHeaderColumns(): void {
     const transformData = (string) => {
       return string.replace(/(?:_| |\b)(\w)/g, function($1){return $1.toUpperCase().replace('_',' ');});
     };
@@ -47,5 +34,14 @@ export class TableComponent implements OnInit {
       };
     });
   }
-
+  private constructTableData(): void {
+    this.data = this.tableData.map((item) => ({
+      taxonid: item.taxonid,
+      scientific_name: item.scientific_name,
+      subspecies: item.subspecies,
+      rank: item.rank,
+      subpopulation: item.subpopulation,
+      category: item.category,
+    }));
+  }
 }

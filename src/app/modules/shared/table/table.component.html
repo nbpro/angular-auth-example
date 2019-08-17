@@ -1,10 +1,11 @@
 <section aria-label="this is section for table component">
   <div class="section-head">
-    <span>Angular Table Component</span>
+    <span>Angular Table Library</span>
   </div>
   <div class="table-container">
     <table>
         <app-table-header [HeaderConfiguration]="columns"></app-table-header>
+        <app-table-body [tableData]="data" [tableColumns]="columns"></app-table-body>
     </table>
     <!-- <div  class="table-header-container">
       <app-table-header></app-table-header>

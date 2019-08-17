@@ -23,7 +23,7 @@ export class IucnListComponent implements OnInit {
     this.store.dispatch(new IucnListActions.GetSpeciesList(`IN`));
     this.store.pipe(select(state => (state['icun-list']['speciesList'])),).subscribe(iucnList => {
       if (iucnList && iucnList.status === 'SUCCESS') {
-        this.iucnList = iucnList.data;
+        this.iucnList = iucnList.data.slice(0, 10);
         this.totalCount = iucnList.count;
         this.getColumns();
       }

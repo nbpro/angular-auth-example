@@ -1,3 +1,7 @@
-<p>
-  table-body works!
-</p>
+<tbody class="table-body">
+  <tr class="table-row" *ngFor="let data of tableData">
+    <th class="table-col" *ngFor="let col of tableColumns">
+      {{data[col.columnName]}}
+    </th>
+  </tr>
+</tbody>
