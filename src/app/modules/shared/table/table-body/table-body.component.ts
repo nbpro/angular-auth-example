@@ -13,6 +13,7 @@ export class TableBodyComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.tableData = this.tableData.slice(0, 10);
   }
 
 }

@@ -1,7 +1,10 @@
-<tbody class="table-body">
+<tbody class="table-body" *ngIf="tableData?.length > 0; else noData">
   <tr class="table-row" *ngFor="let data of tableData">
     <th class="table-col" *ngFor="let col of tableColumns">
       {{data[col.columnName]}}
     </th>
   </tr>
 </tbody>
+<ng-template #noData>
+  <progress class="progress is-small is-primary" max="100">30%</progress>
+</ng-template>

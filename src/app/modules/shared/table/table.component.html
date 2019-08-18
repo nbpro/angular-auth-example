@@ -6,15 +6,7 @@
     <table>
         <app-table-header [HeaderConfiguration]="columns"></app-table-header>
         <app-table-body [tableData]="data" [tableColumns]="columns"></app-table-body>
+        <app-table-footer [NumberOfPages]="getTotalNumberOfPages()" (pageNumberChange)="onPageChangeEvent($event)"></app-table-footer>
     </table>
-    <!-- <div  class="table-header-container">
-      <app-table-header></app-table-header>
-    </div>
-    <div class="table-body-container">
-        <app-table-body></app-table-body>
-    </div>
-    <div class="table-footer-container">
-      <app-table-footer></app-table-footer>
-    </div> -->
   </div>
 </section>

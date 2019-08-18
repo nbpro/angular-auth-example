@@ -1,3 +1,15 @@
-<p>
-  table-footer works!
-</p>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+      <a class="pagination-previous is-primary">Previous</a>
+      <a class="pagination-next is-primary">Next page</a>
+      <div class="pagination-list">
+        <div class="select is-primary is-rounded">
+          <select (change)="onPageChange($event.target.value)">
+            <option  *ngFor="let page of NumberOfPages" [value]="page" >Page {{page}}</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+  </div>
+</footer>

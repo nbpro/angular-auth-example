@@ -1,4 +1,7 @@
-<ng-container *ngIf="totalCount > 0">
-  <app-table [headerData]="headerColumns" [tableData]="iucnList"></app-table>
+<ng-container *ngIf="totalCount > 0; else noData">
+  <app-table [headerData]="headerColumns" [tableData]="iucnList" [pageNumbers]="pageNumbers"></app-table>
 </ng-container>
+<ng-template #noData>
+  <progress class="progress is-small is-primary" max="100">15%</progress>
+</ng-template>
 
