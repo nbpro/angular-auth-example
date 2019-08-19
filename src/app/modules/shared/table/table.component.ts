@@ -47,7 +47,7 @@ export class TableComponent implements OnInit {
     }));
   }
 
-  private getTotalNumberOfPages() {
+  public getTotalNumberOfPages() {
     const recordCount = this.tableData.length;
     const list = this.tableData;
     const pageSize = 10;
