@@ -1,0 +1,11 @@
+
+.search-list-container{
+  width: 100%;
+  height: 100%;
+  &__search-box {
+    position: relative;
+    left: 30%;
+    top: 10%;
+    width: 30%;
+  }
+}
