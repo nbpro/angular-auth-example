@@ -20,7 +20,8 @@ export class SearchListComponent implements OnInit {
   loading: boolean = false;
   @ViewChild('scrollListContainer', { read: ViewContainerRef }) listContainer;
   componentRef: ComponentRef<any>;
-  searchTerm$ = new Subject<string>();
+  // searchTerm$ = new Subject<string>();
+  searchChangeObserver;
 
   constructor(
     private store: Store<any>,
@@ -39,23 +40,24 @@ export class SearchListComponent implements OnInit {
       .subscribe((state) => {
         this.dataToBeSearched = state.data;
     });
-    this.searchTerm$.pipe(
-      debounceTime(1000),
-      distinctUntilChanged(),
-      // mergeMap(search => this.getData())
-    )
   }
   public searchValue($event) {
     this.loading = true;
-    this.searchTerm$.next($event.target.value);
-    this.getData();
+    if (!this.searchChangeObserver) {
+      Observable.create(observer => {
+        this.searchChangeObserver = observer;
+      }).pipe(debounceTime(300)) // wait 300ms after the last event before emitting last event
+        .pipe(distinctUntilChanged()) // only emit if value is different from previous value
+        .subscribe(() =>
+          this.getData()
+        );
+    }
+    this.searchChangeObserver.next(this.searchForm.value.search);
   }
   getData() {
-    const query = this.searchForm.value.search
+    const query = this.searchForm.value.search;
     this.result = this.filterIt(this.dataToBeSearched , query); // TODO: wrap it inside memomised function
-    console.log(this.result);
     this.openScrollView();
-    // return of({});
   }
 
   openScrollView() {
@@ -76,7 +78,7 @@ export class SearchListComponent implements OnInit {
                       if (this.checkSearchValueInChild(arr[i][key], searchKey)) {
                         results.push(arr[i]);
                       }
-                    }else if (arr[i][key].includes(searchKey)) {
+                    }else if (arr[i][key].includes(searchKey)) { //TODO: case insenstive match need to added
                         results.push(arr[i]);
                     }
                 }
