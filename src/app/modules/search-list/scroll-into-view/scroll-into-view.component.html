@@ -1,0 +1,28 @@
+<div class="sroll-view-container" *ngIf="scrollList?.length > 0; else noresult">
+    <div class="card is-hoverable" *ngFor="let item of scrollList">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{item?.id}}
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          {{item?.name}}
+          <address>{{item?.address}}</address>
+          <address>{{item?.pincode}}</address>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noresult>
+    <div class="card">
+      <div class="card-content">
+        <div class="content">
+          No User Found
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+

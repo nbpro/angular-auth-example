@@ -1,11 +1,41 @@
-<div class="search-list-container">
+<div class="search-list-container" *ngIf="dataToBeSearched.length > 0">
   <section class="section search-list-container__search-box">
     <div class="container">
+      <form [formGroup]="searchForm">
         <div class="field">
           <div class="control">
-            <input class="input is-primary is-large" type="text" (keyup.enter)="searchValue($event)" placeholder="Search here...">
+            <input class="input is-primary is-large" formControlName="search" type="text"
+              (keyup.enter)="searchValue($event)" placeholder="Search ID, Name, Address, Orders..">
           </div>
+          <progress class="progress is-warning" *ngIf="loading" value="75" max="100">75%</progress>
+          <template #scrollListContainer></template>
         </div>
+      </form>
+      <!-- <div class="field">
+          <div class="control">
+            <form [formGroup]="searchForm" class="control">
+                <input class="input is-medium"
+                       placeholder="Search..."
+                       formControlName="search"
+                       [appAutocomplete]="autocomplete"/>
+            </form>
+              <p style="color: black; font-size: 18px; margin-bottom: 10px;">{{searchForm.controls.search.value | json }}</p>
+
+              <app-autocomplete #autocomplete="appAutocomplete">
+                <ng-template appAutocompleteContent>
+                  <ng-container *ngIf="(dataToBeSearched | filter: searchForm.controls.search.value) as result">
+                    {{result | json}}
+                    <app-option *ngFor="let option of result" [value]="option">
+                      {{ option | json }}
+                    </app-option>
+                    <app-option class="no-result" *ngIf="!result?.length">No result...</app-option>
+                  </ng-container>
+                </ng-template>
+              </app-autocomplete>
+          </div>
+          <progress class="progress is-warning" *ngIf="loading" value="75" max="100">75%</progress>
+          <template #scrollListContainer></template>
+        </div> -->
     </div>
   </section>
 </div>
